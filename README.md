@@ -31,7 +31,7 @@ cache_alignment	: 64
 address sizes	: 36 bits physical, 32 bits virtual
 power management:
 
-
+ 
 
 with padlock_pmm engine: 
 
