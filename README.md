@@ -2,6 +2,8 @@
 
 OpenSSL engine for VIA padlock_pmm
 
+<pre> 
+ 
 root@it:~# cat /proc/cpuinfo 
 processor	: 0
 vendor_id	: CentaurHauls
@@ -31,7 +33,7 @@ cache_alignment	: 64
 address sizes	: 36 bits physical, 32 bits virtual
 power management:
 
- 
+</pre> 
 
 with padlock_pmm engine: 
 
