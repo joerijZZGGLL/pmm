@@ -33,7 +33,7 @@ cache_alignment	: 64
 address sizes	: 36 bits physical, 32 bits virtual
 power management:
 
-</pre> 
+
 
 with padlock_pmm engine: 
 
@@ -117,3 +117,5 @@ compiler: cc -fPIC -DOPENSSL_PIC -DOPENSSL_THREADS -D_REENTRANT -DDSO_DLFCN -DHA
 dsa  512 bits 0.001361s 0.001442s    734.6    693.7
 dsa 1024 bits 0.004120s 0.004733s    242.7    211.3
 dsa 2048 bits 0.014925s 0.017452s     67.0     57.3
+
+</pre> 
