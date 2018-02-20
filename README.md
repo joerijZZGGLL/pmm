@@ -2,6 +2,58 @@
 
 OpenSSL engine for VIA padlock_pmm
 
+padlock_pmm is a hardware feature of VIA Nano&Eden cpu's, which implements a hardware accelerator for Montgomey Multiplication, as used in DH/RSA/DSA asymetric public-private encryption schemes. 
+
+PadlockPMM is an openSSL engine implementation for VIA padlock_pmm hardware feature. 
+
+It provides an EVP interface implementation for these methods: 
+mod_exp_dh()
+mod_exp_dsa()
+mod_exp_mont()
+
+ECDSA and ECDH are not currenctly supported by PadlockPMM engine.  
+
+PadlockPMM consists of 3 files: 
+e_hw_pmm.c
+e_hw_pmm_err.h
+e_hw_pmm_err.c
+
+files should be placed in  openssl-..../engines/  folder. 
+To make the integration in OpenSSL build system easier, I have chosen to replace an 
+existing engine: e_nuron with the source code of PadlockPMM, so that build system would 
+find and compile&link it without modifications to the Makefiles. 
+
+So the files above should be renamed to: 
+( update: not needed anymore, files are already uploaded with  e_nuron... names ) 
+e_hw_pmm.c  ->  e_nuron.c
+e_hw_pmm_err.h   ->   e_nuron_err.h
+e_hw_pmm_err.c   ->   e_nuron_err.c
+
+calling:  make   
+in the openssl-.../ root-folder should do the trick. 
+
+after building and installing ,  libnuron.so  can be renamed to libpadlockPMM.so 
+on 32bit ubuntu/debian it is located in: /usr/lib/i386-linux-gnu/openssl-1.0.0/engines/
+
+behaviour of padlockPMM can be controlled by entries in openssl.cnf file, 
+usually located in : /usr/lib/ssl/openssl.cnf 
+
+[PLPMM]
+verbose= true/false        will print extra usage information 
+enable= true/false         can be used to disable the engine
+isNano= true/false         should be set to true if cpu is a Nano cpu,  and to false if it is an Eden or older. 
+
+following cmd give some extra information of available options: 
+
+ 	openssl eninge padlockPMM -pre INFO     
+
+--------------------------------------------------------------------------
+
+compiled against openssl_1.0.1t 
+
+on ubuntu 14.0x 32 bits
+
+--------------------------------------------------------------------------
 <pre> 
  
 root@it:~# cat /proc/cpuinfo 
@@ -37,7 +89,7 @@ power management:
 
 <B>WITH</B> padlock_pmm engine: 
 
-root@it:~# ./openssl speed <B>rsa</B>
+root@it:~# ./openssl speed <B>rsa</B> -e padlockPMM
 WARNING: can't open config file: /usr/local/ssl/openssl.cnf
 Doing 512 bit private rsa's for 10s: 9119 512 bit private RSA's in 10.00s
 Doing 512 bit public rsa's for 10s: 65660 512 bit public RSA's in 9.99s
@@ -82,7 +134,7 @@ rsa 4096 bits 0.365714s 0.005747s      2.7    174.0
 
 <B>WITH</B> padlock_pmm engine: 
 
-root@it:~# ./openssl speed <B>dsa</B>
+root@it:~# ./openssl speed <B>dsa</B> -e padlockPMM
 WARNING: can't open config file: /usr/local/ssl/openssl.cnf
 Doing 512 bit sign dsa's for 10s: 12290 512 bit DSA signs in 10.00s
 Doing 512 bit verify dsa's for 10s: 12243 512 bit DSA verify in 10.00s
