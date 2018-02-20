@@ -7,16 +7,18 @@ padlock_pmm is a hardware feature of VIA Nano&Eden cpu's, which implements a har
 PadlockPMM is an openSSL engine implementation for VIA padlock_pmm hardware feature. 
 
 It provides an EVP interface implementation for these methods: 
-mod_exp_dh()
-mod_exp_dsa()
-mod_exp_mont()
+
+ 	mod_exp_dh()
+ 	mod_exp_dsa()
+ 	mod_exp_mont()
 
 ECDSA and ECDH are not currenctly supported by PadlockPMM engine.  
 
 PadlockPMM consists of 3 files: 
-e_hw_pmm.c
-e_hw_pmm_err.h
-e_hw_pmm_err.c
+
+ 	e_hw_pmm.c
+ 	e_hw_pmm_err.h
+ 	e_hw_pmm_err.c
 
 files should be placed in  openssl-..../engines/  folder. 
 To make the integration in OpenSSL build system easier, I have chosen to replace an 
@@ -25,9 +27,10 @@ find and compile&link it without modifications to the Makefiles.
 
 So the files above should be renamed to: 
 ( update: not needed anymore, files are already uploaded with  e_nuron... names ) 
-e_hw_pmm.c  ->  e_nuron.c
-e_hw_pmm_err.h   ->   e_nuron_err.h
-e_hw_pmm_err.c   ->   e_nuron_err.c
+
+ 	e_hw_pmm.c  ->  e_nuron.c
+ 	e_hw_pmm_err.h   ->   e_nuron_err.h
+ 	e_hw_pmm_err.c   ->   e_nuron_err.c
 
 calling:  make   
 in the openssl-.../ root-folder should do the trick. 
