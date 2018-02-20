@@ -37,7 +37,7 @@ power management:
 
 <B>WITH</B> padlock_pmm engine: 
 
-root@it:~# ./openssl speed rsa
+root@it:~# ./openssl speed <B>rsa</B>
 WARNING: can't open config file: /usr/local/ssl/openssl.cnf
 Doing 512 bit private rsa's for 10s: 9119 512 bit private RSA's in 10.00s
 Doing 512 bit public rsa's for 10s: 65660 512 bit public RSA's in 9.99s
@@ -60,7 +60,7 @@ rsa 4096 bits 0.097941s 0.001954s     10.2    511.8
 
 <B>WITHOUT</B> pmm engine: 
 
-root@it:~# openssl speed rsa
+root@it:~# openssl speed <B>rsa</B>
 Doing 512 bit private rsa's for 10s: 7193 512 bit private RSA's in 10.00s
 Doing 512 bit public rsa's for 10s: 79740 512 bit public RSA's in 10.00s
 Doing 1024 bit private rsa's for 10s: 1310 1024 bit private RSA's in 10.00s
@@ -82,7 +82,7 @@ rsa 4096 bits 0.365714s 0.005747s      2.7    174.0
 
 <B>WITH</B> padlock_pmm engine: 
 
-root@it:~# ./openssl speed dsa
+root@it:~# ./openssl speed <B>dsa</B>
 WARNING: can't open config file: /usr/local/ssl/openssl.cnf
 Doing 512 bit sign dsa's for 10s: 12290 512 bit DSA signs in 10.00s
 Doing 512 bit verify dsa's for 10s: 12243 512 bit DSA verify in 10.00s
@@ -102,7 +102,7 @@ dsa 2048 bits 0.004415s 0.005063s    226.5    197.5
 
 <B>WITHOUT</B> pmm engine: 
 
-root@it:~# openssl speed dsa
+root@it:~# openssl speed <B>dsa</B>
 Doing 512 bit sign dsa's for 10s: 7346 512 bit DSA signs in 10.00s
 Doing 512 bit verify dsa's for 10s: 6930 512 bit DSA verify in 9.99s
 Doing 1024 bit sign dsa's for 10s: 2427 1024 bit DSA signs in 10.00s
