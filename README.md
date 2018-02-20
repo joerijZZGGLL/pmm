@@ -60,14 +60,21 @@ compiled against openssl_1.0.1t
 
 on ubuntu 14.0x 32 bits
 
-apt-get install devscripts fakeroot build-essential zlib1g-dev
-dget http://security.debian.org/debian-security/pool/updates/main/o/openssl/openssl_1.0.1t-1+deb7u3.dsc
-dpkg-source -x *.dsc 
-cd openssl*/ 
-dpkg-buildpackage -rfakeroot -b
 
-cd ..
-dpkg -i openssl*.deb libssl1.0.0*.deb
+ 	apt-get install devscripts fakeroot build-essential zlib1g-dev
+
+ 	dget http://security.debian.org/debian-security/pool/updates/main/o/openssl/openssl_1.0.1t-1+deb7u3.dsc
+
+ 	dpkg-source -x *.dsc 
+
+ 	cd openssl*/ 
+
+ 	dpkg-buildpackage -rfakeroot -b
+
+
+ 	cd ..
+
+ 	dpkg -i openssl*.deb libssl1.0.0*.deb
 
 --------------------------------------------------------------------------
 <pre> 
