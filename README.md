@@ -41,10 +41,14 @@ on 32bit ubuntu/debian it is located in: /usr/lib/i386-linux-gnu/openssl-1.0.0/e
 behaviour of padlockPMM can be controlled by entries in openssl.cnf file, 
 usually located in : /usr/lib/ssl/openssl.cnf 
 
-[PLPMM]
-verbose= true/false        will print extra usage information 
-enable= true/false         can be used to disable the engine
-isNano= true/false         should be set to true if cpu is a Nano cpu,  and to false if it is an Eden or older. 
+
+ 	[PLPMM]
+
+ 	verbose= true/false        will print extra usage information 
+
+ 	enable= true/false         can be used to disable the engine
+
+ 	isNano= true/false         should be set to true if cpu is a Nano cpu,  and to false if it is an Eden or older. 
 
 following cmd give some extra information of available options: 
 
