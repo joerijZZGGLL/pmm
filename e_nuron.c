@@ -116,7 +116,7 @@ static double Time_Fl(int s)
  
 // #define BN_mod_mul_montgomeryNNN BN_mod_mul_montgomery
  
-int gbVerbose= 1 ; 
+int gbVerbose= 0 ; 
 int gbIsNano= 0 ; 
 int gbShouldOptimizeReloadBN1 = 1 ; 
 
@@ -1396,9 +1396,9 @@ static int plpmm_init(ENGINE *e)
     
     ///////////
     
-    LHASH_OF(CONF_VALUE) *conf;
+    LHASH_OF(CONF_VALUE) *conf= NULL;
     long eline;
-    char *p, *s, *s2;
+    char *p, *s;
 
     p = getenv("OPENSSL_CONF");
     if (p == NULL)
@@ -1421,10 +1421,12 @@ static int plpmm_init(ENGINE *e)
      */
         
 
-    conf = CONF_load(NULL, (p == NULL ? "openssl.cnf" : p ) , &eline);
+    if (p == NULL) p = "openssl.cnf" ; 
+
+    conf = CONF_load(NULL, p , &eline);
     if (conf == NULL) {
         ERR_load_crypto_strings();
-        printf("unable to load configuration %s, line %ld\n", p, eline);
+        fprintf( stderr, "%s: unable to load configuration %s, line %ld\n", engine_plpmm_id, p, eline);
         ERR_print_errors_fp(stderr);
     }
     else { 
@@ -1480,7 +1482,7 @@ static int plpmm_init(ENGINE *e)
     }
     ///////////
     
-    if (p) OPENSSL_free(p);
+    //if (p) OPENSSL_free(p);
 
     if ( ret == 0 )  return 0 ; 
     
