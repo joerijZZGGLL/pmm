@@ -68,9 +68,12 @@ on ubuntu 14.0x 32 bits
  	dpkg-source -x *.dsc 
 
  	cd openssl*/ 
+  
+  *** required *** copy padlockPMM-sources over e_nuron-sources in  ./engines directory ***
 
  	dpkg-buildpackage -rfakeroot -b
 
+  *** optional ***  you can run openssl-selfcheck by:   perl util/selftest.pl 
 
  	cd ..
 
