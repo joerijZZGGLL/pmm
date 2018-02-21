@@ -2,7 +2,7 @@
 
 OpenSSL engine for VIA padlock_pmm
 
-padlock_pmm is a hardware feature of VIA Nano&Eden cpu's, which implements a hardware accelerator for Montgomey Multiplication, as used in DH/RSA/DSA asymetric public-private encryption schemes. 
+padlock_pmm is a hardware feature of VIA Nano&Eden cpu's, which implements a hardware accelerator for Montgomery Multiplication, as used in DH/RSA/DSA asymetric public-private encryption schemes. 
 
 PadlockPMM is an openSSL engine implementation for VIA padlock_pmm hardware feature. 
 
