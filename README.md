@@ -57,8 +57,7 @@ usually located in : /usr/lib/ssl/openssl.cnf
 following cmd give some extra information of available options: 
 
  	openssl engine padlockPMM -vv
-  
-  openssl eninge padlockPMM -pre INFO     
+ 	openssl eninge padlockPMM -pre INFO     
 
 --------------------------------------------------------------------------
 
