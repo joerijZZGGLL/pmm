@@ -69,7 +69,7 @@ on ubuntu 14.0x 32 bits
 
  	cd openssl*/ 
   
-  *** required *** copy padlockPMM-sources over e_nuron-sources in  ./engines directory ***
+  *** required *** copy padlockPMM-sources over e_nuron-sources in  ./engines directory
 
  	dpkg-buildpackage -rfakeroot -b
 
